@@ -1,0 +1,2 @@
+num_files,num_samples_total,mean_signal_std,mean_background_std,mean_residual_rms,max_peak_abs_residual,mean_response_mean,mean_response_std,max_peak_response
+29,467241,58.256009559840464,58.25441832404288,0.7807930008318948,123.96052480666602,1.0373081233826058,1.856497851190046,281.9111764892154

@@ -1,0 +1,40 @@
+paths:
+  input_root: data/processed
+  table_root: outputs/tables/simple_detector
+  figure_root: outputs/figures/simple_detector
+
+run:
+  representation_name: single_channel
+  pattern: '*.csv'
+  max_files: null
+
+detector:
+  signal_columns:
+    - signal
+  signal_weights:
+    - 1.0
+  normalize_columns: true
+  use_absolute: true
+  smooth_window: 9
+  background_window: 301
+  background_method: median
+  scale_window: 101
+  scale_method: mad
+  scale_epsilon: 1.0e-6
+  scale_floor_ratio: 0.25
+  edge_guard:
+    enabled: true
+    margin: null
+
+  threshold:
+    method: fixed
+    value: 8.0
+
+  candidates:
+    min_length: 7
+    gap_tolerance: 3
+
+  quicklook:
+    enabled: true
+    dpi: 160
+

@@ -1,0 +1,67 @@
+paths:
+  input_root: data/processed
+  table_root: outputs/tables/representation_effect
+  figure_root: outputs/figures/representation_effect
+
+run:
+  representations:
+    - single_channel
+    - real_concat
+    - dual_mode
+  pattern: '*.csv'
+  max_files: null
+
+threshold_calibration:
+  enabled: true
+  method: global_quantile
+  value: 0.995
+
+common_detector:
+  normalize_columns: true
+  use_absolute: true
+  smooth_window: 9
+  background_window: 301
+  background_method: median
+  scale_window: 101
+  scale_method: mad
+  scale_epsilon: 1.0e-6
+  scale_floor_ratio: 0.25
+  edge_guard:
+    enabled: true
+    margin: null
+  threshold:
+    method: fixed
+    value: 8.0
+  candidates:
+    min_length: 7
+    gap_tolerance: 3
+  quicklook:
+    enabled: true
+    dpi: 160
+
+representation_detectors:
+  single_channel:
+    signal_columns:
+      - signal
+    signal_weights:
+      - 1.0
+
+  real_concat:
+    signal_columns:
+      - signal_0
+      - signal_1
+    signal_weights:
+      - 0.5
+      - 0.5
+
+  dual_mode:
+    signal_columns:
+      - mode_common
+      - mode_difference
+      - mode_coupling
+      - mode_saliency
+    signal_weights:
+      - 0.25
+      - 0.25
+      - 0.25
+      - 0.25

@@ -1,0 +1,120 @@
+paths:
+  table_root: outputs/tables/decomposition
+  figure_root: outputs/figures/decomposition
+
+run:
+  pattern: '*.csv'
+  max_files: null
+  enabled_methods:
+    - total_field_highpass
+    - wavelet_denoise
+    - lowrank_sparse
+    - emd
+    - vmd
+    - obf
+    - gradient_obf
+
+methods:
+  total_field_highpass:
+    input_dir: data/processed/single_channel
+    signal_column: signal
+    background_window: 301
+    background_method: median
+    residual_smooth_window: 9
+    scale_window: 101
+    scale_method: mad
+    scale_epsilon: 1.0e-6
+    scale_floor_ratio: 0.25
+    absolute_response: true
+
+  wavelet_denoise:
+    input_dir: data/processed/single_channel
+    signal_column: signal
+    wavelet: db4
+    level: 6
+    threshold_mode: soft
+    threshold_scale: 1.0
+    mirror_pad_size: 800
+    residual_smooth_window: 9
+    scale_window: 101
+    scale_method: mad
+    scale_epsilon: 1.0e-6
+    scale_floor_ratio: 0.25
+    absolute_response: true
+
+  lowrank_sparse:
+    input_dir: data/processed/single_channel
+    signal_column: signal
+    hankel_window: 96
+    lambda_scale: 1.0
+    max_iter: 25
+    tol: 1.0e-5
+    mu_factor: 1.25
+    mu_max: 1.0e6
+    max_rank: 12
+    residual_smooth_window: 9
+    scale_window: 101
+    scale_method: mad
+    scale_epsilon: 1.0e-6
+    scale_floor_ratio: 0.25
+    absolute_response: true
+
+  emd:
+    input_dir: data/processed/single_channel
+    signal_column: signal
+    max_imf: 5
+    keep_imfs: 2
+    mirror_pad_size: 800
+    sift_iterations: 100
+    sd_threshold: 0.2
+    residual_smooth_window: 9
+    scale_window: 101
+    scale_method: mad
+    scale_epsilon: 1.0e-6
+    scale_floor_ratio: 0.25
+    absolute_response: true
+
+  vmd:
+    input_dir: data/processed/single_channel
+    signal_column: signal
+    num_modes: 3
+    keep_modes: 1
+    alpha: 100000.0
+    tau: 0.0
+    tol: 1.0e-7
+    max_iter: 200
+    mirror_pad_size: 800
+    residual_smooth_window: 9
+    scale_window: 101
+    scale_method: mad
+    scale_epsilon: 1.0e-6
+    scale_floor_ratio: 0.25
+    absolute_response: true
+
+  obf:
+    input_dir: data/processed/single_channel
+    signal_column: signal
+    basis_order: 8
+    ridge_lambda: 1.0e-6
+    residual_smooth_window: 9
+    scale_window: 101
+    scale_method: mad
+    scale_epsilon: 1.0e-6
+    scale_floor_ratio: 0.25
+    absolute_response: true
+
+  gradient_obf:
+    input_dir: data/processed/real_concat
+    signal_column: signal_1
+    basis_order: 8
+    ridge_lambda: 1.0e-6
+    residual_smooth_window: 9
+    scale_window: 101
+    scale_method: mad
+    scale_epsilon: 1.0e-6
+    scale_floor_ratio: 0.25
+    absolute_response: true
+
+quicklook:
+  enabled: true
+  dpi: 160

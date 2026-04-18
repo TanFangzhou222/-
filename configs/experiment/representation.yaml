@@ -1,0 +1,51 @@
+paths:
+  input_dir: data/interim
+  output_dir: data/processed
+  figure_dir: outputs/figures/representation
+
+run:
+  pattern: '*_preprocessed.csv'
+  max_files: null
+
+representations:
+  metadata_columns:
+    - sample_index
+    - axis
+    - baseline_distance
+
+  single_channel:
+    enabled: true
+    source_column: mean_field
+    output_column: signal
+
+  real_concat:
+    enabled: true
+    source_columns:
+      - mean_field
+      - gradient_field
+    output_columns:
+      - signal_0
+      - signal_1
+
+  dual_mode:
+    enabled: true
+    common_column: mean_field
+    difference_column: gradient_field
+    common_output_column: mode_common
+    difference_output_column: mode_difference
+    coupling_output_column: mode_coupling
+    saliency_output_column: mode_saliency
+    window_sizes:
+      - 17
+      - 33
+      - 65
+    window_weights:
+      - 0.5
+      - 0.3
+      - 0.2
+    normalize_primary: true
+    normalize_auxiliary: true
+    epsilon: 1.0e-6
+    quicklook:
+      enabled: true
+      dpi: 160

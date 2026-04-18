@@ -1,0 +1,4 @@
+representation,calibration_mode,calibration_target,threshold,actual_exceedance_rate,num_files,num_scores
+dual_mode,global_quantile,0.995,96.79068385139442,0.005001701477396033,29,467241
+real_concat,global_quantile,0.995,13.305150625353635,0.005001701477396033,29,467241
+single_channel,global_quantile,0.995,19.08129351917841,0.005001701477396033,29,467241

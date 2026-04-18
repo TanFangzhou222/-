@@ -1,0 +1,33 @@
+project:
+  name: stage1_mag_exp
+
+paths:
+  input_dir: ../原始数据/exports
+  interim_dir: data/interim
+  figure_dir: outputs/figures
+
+run:
+  pattern: '*.csv'
+  max_files: null
+
+columns:
+  vH: axis
+  vTotalA: sensor_a
+  vTotalB: sensor_b
+  XMiA: x_a
+  XMiB: x_b
+  YMiA: y_a
+  YMiB: y_b
+
+preprocess:
+  drop_duplicate_axis: true
+  outlier_clip:
+    enabled: false
+    columns:
+      - sensor_a
+      - sensor_b
+    n_mad: 6.0
+
+plot:
+  enabled: true
+  dpi: 160

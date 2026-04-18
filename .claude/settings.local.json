@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs wc:*)",
+      "Bash(wc -l /d/桌面/朝闻道/202604/华堪数据/实验代码/src/**/*.py)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx skills:*)",
+      "Bash(npx -y bun \"../../.claude/skills/baoyu-imagine/scripts/main.ts\" --batchfile batch.json --json)",
+      "Bash(python *)",
+      "Bash(pip install *)",
+      "Bash(python3 -c \"import pptx; print\\(pptx.__version__\\)\")",
+      "Bash(where python *)",
+      "Bash(D:\\\\Miniconda\\\\Miniconda\\\\python.exe *)",
+      "Bash(/d/Miniconda/Miniconda/python.exe *)"
+    ]
+  }
+}
